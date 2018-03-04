@@ -7,7 +7,8 @@ defmodule Mtgex.MixProject do
       version: "0.1.0",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      escript: escript()
     ]
   end
 
@@ -21,8 +22,14 @@ defmodule Mtgex.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
+      {:httpotion, "~> 3.1.0"},
+      {:poison, "~> 3.1"},
+      {:flow, "~> 0.13"},
+      {:exvcr, "~> 0.10.1", only: :test}
     ]
+  end
+
+  defp escript do
+    [main_module: Mtgex.CLI]
   end
 end
